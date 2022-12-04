@@ -22,10 +22,7 @@ if config['FLASK_ENV'] == 'development':
     app.debug = True # debug mnode
 
 # make one persistent connection to the database
-connection = pymongo.MongoClient(config['MONGO_HOST'], 27017, 
-                                username=config['MONGO_USER'],
-                                password=config['MONGO_PASSWORD'],
-                                authSource=config['MONGO_DBNAME'])
+connection = pymongo.MongoClient("mongodb+srv://jciw62643368:Wjy2019hyp%21@cluster0.utqz1ck.mongodb.net/?retryWrites=true&w=majority")
 db = connection[config['MONGO_DBNAME']] # store a reference to the database
 
 # set up the routes

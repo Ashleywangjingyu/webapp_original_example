@@ -62,12 +62,14 @@ def create_post():
     Route for POST requests to the create page.
     Accepts the form submission data for a new document and saves the document to the database.
     """
+    '''
     bt_a = request.values.get("degree")
     if (bt_a == '1 Jingting Bai'):
         degree='1 Jingting Bai'
-
+    '''
 
     name = request.form['fname']
+    degree=request.form['degree']
     message = request.form['fmessage']
 
 
@@ -99,12 +101,14 @@ def edit_post(mongoid):
     Route for POST requests to the edit page.
     Accepts the form submission data for the specified document and updates the document in the database.
     """
+    '''
     bt_a = request.values.get("degree")
     if (bt_a == '1 Jingting Bai'):
         degree='1 Jingting Bai'
-
+    '''
 
     name = request.form['fname']
+    degree=request.form['degree']
     message = request.form['fmessage']
 
     doc = {

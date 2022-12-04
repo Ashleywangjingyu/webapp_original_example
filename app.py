@@ -60,7 +60,7 @@ def create_post():
     Accepts the form submission data for a new document and saves the document to the database.
     """
     name = request.form['fname']
-    degree = request.form.['degree']
+    degree = request.form['degree']
     message=request.form['message']
 
 

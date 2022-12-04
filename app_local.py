@@ -61,12 +61,14 @@ def create_post():
     Accepts the form submission data for a new document and saves the document to the database.
     """
     name = request.form['fname']
+    degree=request.form['degree']
     message = request.form['fmessage']
 
 
     # create a new document with the data the user entered
     doc = {
         "name": name,
+        'degree':degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -92,11 +94,13 @@ def edit_post(mongoid):
     Accepts the form submission data for the specified document and updates the document in the database.
     """
     name = request.form['fname']
+    degree=request.form['degree']
     message = request.form['fmessage']
 
     doc = {
         # "_id": ObjectId(mongoid), 
         "name": name, 
+        'degree':degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }

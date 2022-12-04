@@ -7,8 +7,6 @@ import datetime
 from bson.objectid import ObjectId
 import os
 import subprocess
-import cgi, cgitb
-
 
 # instantiate the app
 app = Flask(__name__)
@@ -26,7 +24,6 @@ if config['FLASK_ENV'] == 'development':
 # make one persistent connection to the database
 connection = pymongo.MongoClient("mongodb+srv://jciw62643368:Wjy2019hyp%21@cluster0.ydabjof.mongodb.net/?retryWrites=true&w=majority")
 db = connection[config['MONGO_DBNAME']] # store a reference to the database
-
 # set up the routes
 
 @app.route('/')
@@ -63,14 +60,16 @@ def create_post():
     Accepts the form submission data for a new document and saves the document to the database.
     """
     name = request.form['fname']
-    degree = request.form['degree']     
+    degree = request.form.getlist('degree')
     message=request.form['message']
-   
+
+
+
 
     # create a new document with the data the user entered
     doc = {
         "name": name,
-        "degree": degree,
+        "degree1": degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -96,8 +95,9 @@ def edit_post(mongoid):
     Accepts the form submission data for the specified document and updates the document in the database.
     """
     name = request.form['fname']
-    degree = request.form['degree']   
-    message=request.form['message']
+    degree = request.form.getlist('degree')
+    message = request.form['fmessage']
+
 
     doc = {
         # "_id": ObjectId(mongoid), 

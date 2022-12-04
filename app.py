@@ -132,16 +132,23 @@ def photo():
     """
     return render_template('photo.html') # render the create template
 
-@app.route("/trial", methods=['GET', 'POST'])
-def trial():
+@app.route("/trial", methods=['POST', "GET"])
+def button_t():
+    message = ''
+    if request.method == 'GET':
+        return render_template('trial.html', message = '未点击按钮')
+ 
     if request.method == 'POST':
-        if request.form.get('action1') == 'VALUE1':
-            return redirect(url_for('photo')) # do something
-        elif  request.form.get('action2') == 'VALUE2':
-            return redirect(url_for('photo')) # do something else
-        else:
-            pass # unknown
-    return render_template("trial.html")
+        #获取被点击的按钮
+        bt_a = request.values.get("按钮一")
+        bt_b = request.values.get("按钮二")
+        if (bt_a == 'First'):
+            return render_template('trial.html', message = '按钮一被点击')
+        if (bt_b == 'Second'):
+            return render_template('trial.html', message = '按钮二被点击')
+ 
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 
 @app.route('/webhook', methods=['POST'])

@@ -7,6 +7,8 @@ import datetime
 from bson.objectid import ObjectId
 import os
 import subprocess
+import cgi, cgitb
+
 
 # instantiate the app
 app = Flask(__name__)
@@ -22,7 +24,7 @@ if config['FLASK_ENV'] == 'development':
     app.debug = True # debug mnode
 
 # make one persistent connection to the database
-connection = pymongo.MongoClient("mongodb+srv://jciw62643368:Wjy2019hyp%21@cluster0.utqz1ck.mongodb.net/?retryWrites=true&w=majority")
+connection = pymongo.MongoClient("mongodb+srv://jciw62643368:Wjy2019hyp%21@cluster0.ydabjof.mongodb.net/?retryWrites=true&w=majority")
 db = connection[config['MONGO_DBNAME']] # store a reference to the database
 
 # set up the routes
@@ -61,12 +63,16 @@ def create_post():
     Accepts the form submission data for a new document and saves the document to the database.
     """
     name = request.form['fname']
-    message = request.form['fmessage']
-
+    # Create instance of FieldStorage
+    form = cgi.FieldStorage()
+    degree = form.getvalue('degree')    
+    message=request.form['message']
+   
 
     # create a new document with the data the user entered
     doc = {
         "name": name,
+        "degree": degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -74,7 +80,7 @@ def create_post():
 
     return redirect(url_for('read')) # tell the browser to make a request for the /read route
 
-
+# for edit
 @app.route('/edit/<mongoid>')
 def edit(mongoid):
     """
@@ -92,11 +98,15 @@ def edit_post(mongoid):
     Accepts the form submission data for the specified document and updates the document in the database.
     """
     name = request.form['fname']
-    message = request.form['fmessage']
+    # Create instance of FieldStorage
+    form = cgi.FieldStorage()
+    degree = form.getvalue('degree')    
+    message=request.form['message']
 
     doc = {
         # "_id": ObjectId(mongoid), 
         "name": name, 
+        "degree": degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -117,6 +127,14 @@ def delete(mongoid):
     """
     db.exampleapp.delete_one({"_id": ObjectId(mongoid)})
     return redirect(url_for('read')) # tell the web browser to make a request for the /read route.
+
+@app.route('/photo')
+def photo():
+    """
+    Route for GET requests to the create page.
+    Displays a form users can fill out to create a new document.
+    """
+    return render_template('photo.html') # render the create template
 
 @app.route('/webhook', methods=['POST'])
 def webhook():

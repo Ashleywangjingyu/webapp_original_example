@@ -1,10 +1,65 @@
 {% extends 'base.html' %} {% block container %}
-<h2>Create</h2>
-<p>Create a new record in the MongoDB database collection.</p>
+<meta http-equiv="pragma" content="no-cache" />
+
+<h2>Vote For Your Pick</h2>
+<p>Please vote for the artist that you like the most and leave your reasons below in the comments. Thank you very much!</p>
 <form method="POST" action="{{ url_for('create_post') }}">
-  <p>Your name: <input type="text" id="fname" name="fname" /><br /></p>
   <p>
-    Message:
+    <b><label for="fname">Name</label></b>
+  </p>
+  <p>
+    <input type="text" id="fname" name="fname" /><br /></p>
+  </p>
+  <p>
+    <b><label for="degree">Your Pick</label></b>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="1 Jingting Bai"> </input>
+    <label for="degree-0">1 Jingting Bai</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="2 Chanyeol Park"> </input>
+    <label for="degree-1">2 Chanyeol Park</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="3 Sehun Ooh"> </input>
+    <label for="degree-2">3 Sehun Ooh</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="4 Hedi Wang"> </input>
+    <label for="degree-3">4 Hedi Wang</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="5 Yibo Wang"> </input>
+    <label for="degree-4">5 Yibo Wang</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="6 Feiyu Chen"></input>
+    <label for="degree-5">6 Feiyu Chen</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="7 Weilong Song"></input>
+    <label for="degree-6">7 Weilong Song</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="8 Yunxi Luo"></input>
+    <label for="degree-7">8 Yunxi Luo</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="9 Baekhyun Byun"></input>
+    <label for="degree-8">9 Baekhyun Byun</label>
+  </p>
+  <p>
+    <input type="radio" name="degree" value="10 Taeyong Lee"></input>
+    <label for="degree-9">10 Taeyong Lee</label>
+  </p>  <p>
+    <input type="radio" name="degree" value="11 Other (please leave his name in the comment below)"></input>
+    <label for="degree-10">11 Other (please leave his name in the comment below)</label>
+  </p>
+  <p>
+    <b><label for="fmessage">Comments On Your Pick</label></b>
+  </p>
+  <p>
     <textarea type="text" id="fmessage" name="fmessage"></textarea>
   </p>
   <p>

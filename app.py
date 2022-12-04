@@ -81,6 +81,7 @@ def create_post():
 
     return redirect(url_for('read')) # tell the browser to make a request for the /read route
     '''
+    form = ContactForm()
     if request.method == 'POST':
         if request.form['degree'] == '1 Jingting Bai':
             pass # do something
@@ -100,6 +101,21 @@ def create_post():
             pass # do something else        
         else:
             pass # unknown
+            name = request.form['fname']
+    # Create instance of FieldStorage
+        form = cgi.FieldStorage()
+        degree = form.getvalue('degree')    
+        message=request.form['message']
+    
+
+        # create a new document with the data the user entered
+        doc = {
+            "name": name,
+            "degree": degree,
+            "message": message, 
+            "created_at": datetime.datetime.utcnow()
+        }
+        db.exampleapp.insert_one(doc) # insert a new document
     elif request.method == 'GET':
         return render_template('read.html', form=form)
 

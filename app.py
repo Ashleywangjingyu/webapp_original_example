@@ -65,6 +65,7 @@ def create_post():
  
     #if request.method == 'POST':
         #obtain the selected button
+    '''
     bt_a = request.values.get("degree")
     if (bt_a == '1 Jingting Bai'):
         degree="1 Jingting Bai"
@@ -96,9 +97,9 @@ def create_post():
     elif (bt_a == '10 Taeyong Lee'):
         degree="1 Jingting Bai"
         #return render_template('create.html', message = '10 Taeyong Lee')
-
+    '''
     name = request.form['fname']
-    #degree = request.form['degree']
+    degree = request.form['degree']
     message=request.form['fmessage']
 
     # create a new document with the data the user entered
@@ -131,6 +132,7 @@ def edit_post(mongoid):
     """
     #if request.method == 'POST':
         #obtain the selected button
+    '''
     bt_a = request.values.get("degree")
     if (bt_a == '1 Jingting Bai'):
         degree="1 Jingting Bai"
@@ -162,9 +164,9 @@ def edit_post(mongoid):
     elif (bt_a == '10 Taeyong Lee'):
         degree="1 Jingting Bai"
         #return render_template('create.html', message = '10 Taeyong Lee')
-
+    '''
     name = request.form['fname']
-    #degree = request.form['degree']
+    degree = request.form['degree']
     message = request.form['fmessage']
 
 

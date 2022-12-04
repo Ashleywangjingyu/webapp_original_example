@@ -60,7 +60,7 @@ def create_post():
     Accepts the form submission data for a new document and saves the document to the database.
     """
     name = request.form['fname']
-    degree = request.form.getlist('degree')
+    degree = request.form.['degree']
     message=request.form['message']
 
 
@@ -95,7 +95,7 @@ def edit_post(mongoid):
     Accepts the form submission data for the specified document and updates the document in the database.
     """
     name = request.form['fname']
-    degree = request.form.getlist('degree')
+    degree = request.form['degree']
     message = request.form['fmessage']
 
 

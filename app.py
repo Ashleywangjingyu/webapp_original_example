@@ -136,14 +136,11 @@ def photo():
 def trial():
     if request.method == 'POST':
         if request.form.get('action1') == 'VALUE1':
-            pass # do something
+            return redirect(url_for('photo')) # do something
         elif  request.form.get('action2') == 'VALUE2':
-            pass # do something else
+            return redirect(url_for('photo')) # do something else
         else:
             pass # unknown
-    elif request.method == 'GET':
-        return render_template('trial.html', form=form)
-    
     return render_template("trial.html")
 
 

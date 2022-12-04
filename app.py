@@ -59,36 +59,43 @@ def create_post():
     Route for POST requests to the create page.
     Accepts the form submission data for a new document and saves the document to the database.
     """
-    reply_message = ''
-    if request.method == 'GET':
-        return render_template('create.html', reply_message = "didn't select")
+    #message = ''
+    #if request.method == 'GET':
+        #return render_template('create.html', message = "didn't select")
  
-    if request.method == 'POST':
+    #if request.method == 'POST':
         #obtain the selected button
-        bt_a = request.values.get("degree")
-        if (bt_a == '1 Jingting Bai'):
-            return render_template('create.html', reply_message = '1 Jingting Bai')
-        elif (bt_a == '2 Chanyeol Park'):
-            return render_template('create.html', reply_message = '2 Chanyeol Park')
-        elif (bt_a == '3 Sehun Ooh'):
-            return render_template('create.html', reply_message = '3 Sehun Ooh')
-        elif (bt_a == '4 Hedi Wang'):
-            return render_template('create.html', reply_message = '4 Hedi Wang')
-        elif (bt_a == '5 Yibo Wang'):
-            return render_template('create.html', reply_message = '5 Yibo Wang')
-        elif (bt_a == '6 Feiyu Chen'):
-            return render_template('create.html', reply_message = '6 Feiyu Chen')
-        elif (bt_a == '7 Weilong Song'):
-            return render_template('create.html', reply_message = '7 Weilong Song')
-        elif (bt_a == '8 Yunxi Luo'):
-            return render_template('create.html', reply_message = '8 Yunxi Luo')
-        elif (bt_a == '9 Baekhyun Byun'):
-            return render_template('create.html', reply_message = '9 Baekhyun Byun')
-        elif (bt_a == '10 Taeyong Lee'):
-            return render_template('create.html', reply_message = '10 Taeyong Lee')
-
-
-
+    bt_a = request.values.get("degree")
+    if (bt_a == '1 Jingting Bai'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '1 Jingting Bai')
+    elif (bt_a == '2 Chanyeol Park'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '2 Chanyeol Park')
+    elif (bt_a == '3 Sehun Ooh'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '3 Sehun Ooh')
+    elif (bt_a == '4 Hedi Wang'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '4 Hedi Wang')
+    elif (bt_a == '5 Yibo Wang'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '5 Yibo Wang')
+    elif (bt_a == '6 Feiyu Chen'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '6 Feiyu Chen')
+    elif (bt_a == '7 Weilong Song'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '7 Weilong Song')
+    elif (bt_a == '8 Yunxi Luo'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '8 Yunxi Luo')
+    elif (bt_a == '9 Baekhyun Byun'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '9 Baekhyun Byun')
+    elif (bt_a == '10 Taeyong Lee'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '10 Taeyong Lee')
 
     name = request.form['fname']
     #degree = request.form['degree']
@@ -97,6 +104,7 @@ def create_post():
     # create a new document with the data the user entered
     doc = {
         "name": name,
+        "degree":degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -121,6 +129,40 @@ def edit_post(mongoid):
     Route for POST requests to the edit page.
     Accepts the form submission data for the specified document and updates the document in the database.
     """
+    #if request.method == 'POST':
+        #obtain the selected button
+    bt_a = request.values.get("degree")
+    if (bt_a == '1 Jingting Bai'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '1 Jingting Bai')
+    elif (bt_a == '2 Chanyeol Park'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '2 Chanyeol Park')
+    elif (bt_a == '3 Sehun Ooh'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '3 Sehun Ooh')
+    elif (bt_a == '4 Hedi Wang'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '4 Hedi Wang')
+    elif (bt_a == '5 Yibo Wang'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '5 Yibo Wang')
+    elif (bt_a == '6 Feiyu Chen'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '6 Feiyu Chen')
+    elif (bt_a == '7 Weilong Song'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '7 Weilong Song')
+    elif (bt_a == '8 Yunxi Luo'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '8 Yunxi Luo')
+    elif (bt_a == '9 Baekhyun Byun'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '9 Baekhyun Byun')
+    elif (bt_a == '10 Taeyong Lee'):
+        degree="1 Jingting Bai"
+        #return render_template('create.html', message = '10 Taeyong Lee')
+
     name = request.form['fname']
     #degree = request.form['degree']
     message = request.form['fmessage']
@@ -129,6 +171,7 @@ def edit_post(mongoid):
     doc = {
         # "_id": ObjectId(mongoid), 
         "name": name, 
+        "degree":degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }

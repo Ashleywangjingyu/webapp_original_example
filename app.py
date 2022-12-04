@@ -53,23 +53,50 @@ def create():
     return render_template('create.html') # render the create template
 
 
-@app.route('/create', methods=['POST'])
+@app.route('/create', methods=['POST','GET'])
 def create_post():
     """
     Route for POST requests to the create page.
     Accepts the form submission data for a new document and saves the document to the database.
     """
+    reply_message = ''
+    if request.method == 'GET':
+        return render_template('create.html', reply_message = "didn't select")
+ 
+    if request.method == 'POST':
+        #obtain the selected button
+        bt_a = request.values.get("degree")
+        if (bt_a == '1 Jingting Bai'):
+            return render_template('create.html', reply_message = '1 Jingting Bai')
+        elif (bt_a == '2 Chanyeol Park'):
+            return render_template('create.html', reply_message = '2 Chanyeol Park')
+        elif (bt_a == '3 Sehun Ooh'):
+            return render_template('create.html', reply_message = '3 Sehun Ooh')
+        elif (bt_a == '4 Hedi Wang'):
+            return render_template('create.html', reply_message = '4 Hedi Wang')
+        elif (bt_a == '5 Yibo Wang'):
+            return render_template('create.html', reply_message = '5 Yibo Wang')
+        elif (bt_a == '6 Feiyu Chen'):
+            return render_template('create.html', reply_message = '6 Feiyu Chen')
+        elif (bt_a == '7 Weilong Song'):
+            return render_template('create.html', reply_message = '7 Weilong Song')
+        elif (bt_a == '8 Yunxi Luo'):
+            return render_template('create.html', reply_message = '8 Yunxi Luo')
+        elif (bt_a == '9 Baekhyun Byun'):
+            return render_template('create.html', reply_message = '9 Baekhyun Byun')
+        elif (bt_a == '10 Taeyong Lee'):
+            return render_template('create.html', reply_message = '10 Taeyong Lee')
+
+
+
+
     name = request.form['fname']
-    degree = request.form['degree']
+    #degree = request.form['degree']
     message=request.form['message']
-
-
-
 
     # create a new document with the data the user entered
     doc = {
         "name": name,
-        "degree": degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -95,14 +122,13 @@ def edit_post(mongoid):
     Accepts the form submission data for the specified document and updates the document in the database.
     """
     name = request.form['fname']
-    degree = request.form['degree']
+    #degree = request.form['degree']
     message = request.form['fmessage']
 
 
     doc = {
         # "_id": ObjectId(mongoid), 
         "name": name, 
-        "degree": degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -131,22 +157,6 @@ def photo():
     Displays a form users can fill out to create a new document.
     """
     return render_template('photo.html') # render the create template
-
-@app.route("/trial", methods=['POST', "GET"])
-def trial():
-    message = ''
- 
-    if request.method == 'POST':
-        #获取被点击的按钮
-        bt_a = request.values.get("按钮一")
-        bt_b = request.values.get("按钮二")
-        if (bt_a == 'First'):
-            #return render_template('trial.html', message = '按钮一被点击')
-            return redirect(url_for('read'))
-        if (bt_b == 'Second'):
-            #return render_template('trial.html', message = '按钮二被点击')
-            return redirect(url_for('read'))
-    return render_template('trial.html', message = '未点击按钮')
 
 @app.route('/webhook', methods=['POST'])
 def webhook():

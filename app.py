@@ -99,7 +99,7 @@ def create_post():
 
     name = request.form['fname']
     #degree = request.form['degree']
-    message=request.form['message']
+    message=request.form['fmessage']
 
     # create a new document with the data the user entered
     doc = {

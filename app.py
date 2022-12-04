@@ -62,6 +62,7 @@ def create_post():
     Route for POST requests to the create page.
     Accepts the form submission data for a new document and saves the document to the database.
     """
+    '''
     name = request.form['fname']
     # Create instance of FieldStorage
     form = cgi.FieldStorage()
@@ -79,6 +80,28 @@ def create_post():
     db.exampleapp.insert_one(doc) # insert a new document
 
     return redirect(url_for('read')) # tell the browser to make a request for the /read route
+    '''
+    if request.method == 'POST':
+        if request.form['degree'] == '1 Jingting Bai':
+            pass # do something
+        elif request.form['degree'] == '2 Chanyeol Park':
+            pass # do something else
+        elif request.form['degree'] == '3 Sehun Ooh':
+            pass # do something else
+        elif request.form['degree'] == '4 Hedi Wang':
+            pass # do something else
+        elif request.form['degree'] == '5 Yibo Wang':
+            pass # do something else
+        elif request.form['degree'] == '6 Feiyu Chen':
+            pass # do something else
+        elif request.form['degree'] == '7 Weilong Song':
+            pass # do something else
+        elif request.form['degree'] == '8 Yunxi Luo':
+            pass # do something else        
+        else:
+            pass # unknown
+    elif request.method == 'GET':
+        return render_template('read.html', form=form)
 
 # for edit
 @app.route('/edit/<mongoid>')

@@ -69,7 +69,7 @@ def create_post():
     # create a new document with the data the user entered
     doc = {
         "name": name,
-        "degree1": degree,
+        "degree": degree,
         "message": message, 
         "created_at": datetime.datetime.utcnow()
     }
@@ -131,6 +131,21 @@ def photo():
     Displays a form users can fill out to create a new document.
     """
     return render_template('photo.html') # render the create template
+
+@app.route("/trial", methods=['GET', 'POST'])
+def trial():
+    if request.method == 'POST':
+        if request.form.get('action1') == 'VALUE1':
+            pass # do something
+        elif  request.form.get('action2') == 'VALUE2':
+            pass # do something else
+        else:
+            pass # unknown
+    elif request.method == 'GET':
+        return render_template('trial.html', form=form)
+    
+    return render_template("trial.html")
+
 
 @app.route('/webhook', methods=['POST'])
 def webhook():

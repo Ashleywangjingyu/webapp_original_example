@@ -13,6 +13,10 @@
         <br><br><input type=submit value='Second' name="按钮二">
         <br><br>当前状态<br><br>
         {{ message }}
+        <p>
+          <a href="{{ url_for('read')}}">Cancel</a>
+          <input type="submit" name="post-btn" value="Post" />
+        </p>
     </form>
 </div>
 </body>

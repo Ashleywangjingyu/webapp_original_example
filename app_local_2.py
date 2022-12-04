@@ -69,8 +69,8 @@ def create_post():
     # create a new document with the data the user entered
     doc = {
         "name": name,
-        "message": message, 
         'degree':degree,
+        "message": message,     
         "created_at": datetime.datetime.utcnow()
     }
     db.exampleapp.insert_one(doc) # insert a new document
@@ -103,8 +103,8 @@ def edit_post(mongoid):
     doc = {
         # "_id": ObjectId(mongoid), 
         "name": name, 
-        "message": message, 
         'degree':degree,
+        "message": message,        
         "created_at": datetime.datetime.utcnow()
     }
 
